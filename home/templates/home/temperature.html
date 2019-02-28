@@ -1,0 +1,68 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AgriCrop - Temperature</title>
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/weather.css' %}" rel="stylesheet">
+  </head>
+
+  <body id="page-top">
+    {% block content %}  
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid" align="center">
+        
+        <!-- Content Row -->
+        <div class="row">
+          <div class="col-xl-8 col-lg-7">
+            
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Rainfall Chart</h6>
+              </div>
+              <div class="card-body">
+                <h2>Brussels</h2>
+                <h3>Cloudy<span>Wind 10km/h <span class="dot">•</span> Precip 0%</span></h3>
+                <br><br><br><br>
+                <h1>23°</h1>
+                <br><br>
+                <table>
+                  <tr>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td> 
+                  </tr>
+                      <tr>
+                          <td>30°</td>
+                          <td>34°</td>
+                          <td>36°</td>
+                          <td>34°</td>
+                          <td>37°</td>
+                      </tr>
+                      <tr>
+                          <td>17°</td>
+                          <td>22°</td>
+                          <td>19°</td>
+                          <td>23°</td>
+                          <td>19°</td>
+                      </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Area Chart Ends Here -->  
+          </div>  
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+    {% endblock %}
+  </body>
+</html>

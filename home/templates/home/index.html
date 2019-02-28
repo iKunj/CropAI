@@ -1,0 +1,77 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<body>
+    {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+    
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800" align="Center">Welcome to CropAI!!</h1>
+          </div>
+    
+          <!-- Content Row -->
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form action="{% url 'rainfall-home' %}">
+                <button class="btn1 btn-success btn-block">RainFall</button>
+              </form>
+            </div>
+
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form action="{% url 'policy-home' %}">
+                <button class="btn1 btn-info btn-block">Loan Policies</button>
+              </form>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form action="{% url 'temperature-home' %}">
+                <button class="btn1 btn-danger btn-block">Temperture</button>
+              </form>
+            </div>
+
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form action="{% url 'predict-home' %}">
+                <button class="btn1 btn-primary btn-block">Predict Crop</button>
+              </form>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form action="{% url 'news-home' %}">
+                <button class="btn1 btn-warning btn-block">News for Farmers</button>
+              </form>
+              </div>
+
+              <div class="col-xl-6 col-md-6 mb-4">
+                <form action="{% url 'fertilizer-home' %}">
+                  <button class="btn1 btn-success btn-block">Fertilizer</button>
+                </form>
+              </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-4">
+              <button class="btn1 btn-secondary btn-block">Finance Handling</button>
+            </div>
+
+            <div class="col-xl-6 col-md-6 mb-4">
+              <button class="btn1 btn-primary btn-block">Plant Growth</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    
+      </div>
+      <!-- End of Main Content -->
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container-fluid" align="center">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4" align="center">
+                <h1 class="h3 mb-0 text-gray-800" align="center">Latest News!!{{data.totalresults}}</h1>
+            </div>
+
+            <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+                {% for news in contents.articles %}
+                    <a href="{{news.url}}">
+                        <div class="card" style="border-width:2px;border-color: #00887A">
+                            <!-- <img class="fir-author-image fir-clickcircle" width="60%" height="80%" src="{{news.urlToImage}}" alt="David East - Author"> -->
+                            <img class="card-img-top" src="{{news.urlToImage}}" alt="Profile">
+                            <div class="card-body text-center">
+                                <figcaption>
+                                    <h2 align="justify"><div class="fig-author-figure-title">{{news.title}}</div></h2>
+                                    <hr color="black">
+                                    <div class="fig-author-figure-title" align="justify" style="float:right">{{news.description}}</div>
+                                </figcaption>
+                            </div>
+                            <!--</figure>-->
+                        </div>
+                        <br><hr><br>
+                    </a>
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+    {% endblock content %}
+</body>
+</html>

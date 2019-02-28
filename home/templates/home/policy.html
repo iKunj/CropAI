@@ -1,0 +1,92 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>AgriCrop - Policy</title>
+  </head>
+
+  <body id="page-top">
+    {% block content %}
+      
+      <!-- Main Content -->
+      <div id="content">
+
+        <div class="container-fluid" align="center">
+          <div>
+            <!--Applicants-->
+            <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+              <div class="card" style="border-width:5px;border-color: #00887A">
+                <img class="card-img-top" src="{% static 'img/soil.png' %}" alt="Profile">
+                  <div class="card-body text-center">
+                    <!-- user name -->
+                    <h4 class="card-title">Soil Health Card Scheme</h4>
+                    <!-- job title / comany name -->
+                    <p class="card-text text-muted">Improving Soil Health <br>And Its Fertility</p>
+                    <!-- social profile links -->
+                            
+                    <!-- CTA button -->
+                    <p class="mt-4"><a href="https://soilhealth.dac.gov.in/" target="_blank"  class="btn btn-primary">Read More And Apply</a></p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+              <div class="card" style="border-width:5px;border-color: #00887A">
+                   <img class="card-img-top" src="{% static 'img/NMSA.JPG' %}" alt="Profile">
+                       <div class="card-body text-center">
+                            <!-- user name -->
+                            <h4 class="card-title">National Mission for Sustainable Agriculture</h4>
+                            <!-- job title / comany name -->
+                            <p class="card-text text-muted">Promoting Sustainable Agriculture Through Climate Change</p>
+                            <!-- social profile links -->
+                           
+                            <!-- CTA button -->
+                            <p class="mt-4"><a href="https://nmsa.dac.gov.in/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                        </div>
+                     </div>
+            </div>
+
+
+             <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+                  <div class="card" style="border-width:5px;border-color:#00887A">
+                   <img class="card-img-top" src="{% static 'img/PMKSY.JPG' %}" alt="Profile">
+                       <div class="card-body text-center">
+                            <!-- user name -->
+                            <h4 class="card-title">Pradhan Mantri Krishi Sinchai Yojana</h4><br>
+                            <!-- job title / comany name -->
+                            <p class="card-text text-muted">End-to End Solutions In Irrigation Supply Chain, Viz. Water Sources, Distribution Network And Farm Level Applications</p>
+                            <!-- social profile links -->
+                            
+                            <!-- CTA button -->
+                            <p class="mt-4"><a href="https://pmksy.gov.in/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                        </div>
+                     </div>
+            </div>
+            <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+              <div class="card" style="border-width:5px;border-color: #00887A">
+                <img class="card-img-top" src="{% static 'img/enam.JPG' %}" alt="Profile">
+                  <div class="card-body text-center">
+                    <!-- user name -->
+                    <h4 class="card-title">National Agriculture Market (e-NAM)</h4>
+                    <!-- job title / comany name -->
+                    <p class="card-text text-muted">Pan-India Electronic Trading Portal Which Networks The Existing APMC Mandis To Create A Unified National Market For Agricultural Commodities</p>
+                    <!-- social profile links -->
+                            
+                    <!-- CTA button -->
+                    <p class="mt-4"><a href="http://www.enam.gov.in/enam/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Main Content -->
+
+    {% endblock %}
+  </body>
+</html>
+     
