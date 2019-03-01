@@ -3,6 +3,11 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+  {% block head %}
+    <title>Farmer - Dashboard</title>
+  {% endblock head %}
+</head>
 <body>
     {% block content %}
         <!-- Begin Page Content -->
@@ -45,7 +50,7 @@
           <div class="row">
             <div class="col-xl-6 col-md-6 mb-4">
               <form action="{% url 'news-home' %}">
-                <button class="btn1 btn-warning btn-block">News for Farmers</button>
+                <button class="btn1 btn-warning btn-block">News</button>
               </form>
               </div>
 
@@ -65,6 +70,20 @@
               <button class="btn1 btn-primary btn-block">Plant Growth</button>
             </div>
           </div>
+
+          <div class="row">
+              <div class="col-xl-6 col-md-6 mb-4">
+                <form action="#">
+                  <button class="btn1 btn-danger btn-block">Sell Here</button>
+                </form>
+                </div>
+  
+                <div class="col-xl-6 col-md-6 mb-4">
+                  <form action="#">
+                    <button class="btn1 btn-success btn-block">Help</button>
+                  </form>
+                </div>
+            </div>
 
         </div>
         <!-- /.container-fluid -->

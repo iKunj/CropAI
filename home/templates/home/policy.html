@@ -4,9 +4,12 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block head %}
     <title>AgriCrop - Policy</title>
+    <!-- Custom styles for this template Policy -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="{% static 'css/weather.css' %}" rel="stylesheet">
+    {% endblock head %}
   </head>
 
   <body id="page-top">

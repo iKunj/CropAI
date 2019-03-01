@@ -7,6 +7,8 @@ from news import views as news_views
 from policy import views as policy_views
 from temperature import views as temperature_views
 from django.contrib.auth import views as auth_views
+from users import views as users_view
+from home import views as home_views
 
 urlpatterns = [
     path('', include('home.urls')),
@@ -19,6 +21,6 @@ urlpatterns = [
     path('temperature/', temperature_views.home, name='temperature-home'),
 
     #User Part
-    path('login/', auth_views.LoginView.as_view(template_name = 'home/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name = 'home/logout.html'), name='logout'),
+    path('login/', home_views.login_view , name='login'),
+    path('logout/', users_view.logout_view , name='logout_view'),
 ]

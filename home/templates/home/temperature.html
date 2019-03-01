@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AgriCrop - Temperature</title>
-
-    <!-- Custom styles for this template-->
-    <link href="{% static 'css/weather.css' %}" rel="stylesheet">
+    {% block head %}
+      <title>AgriCrop - Temperature</title>
+      <!-- Custom styles for this template-->
+      <link href="{% static 'css/weather.css' %}" rel="stylesheet">
+    {% endblock head %}
   </head>
 
   <body id="page-top">
@@ -26,7 +27,7 @@
                 <h6 class="m-0 font-weight-bold text-primary" align="Center">Rainfall Chart</h6>
               </div>
               <div class="card-body">
-                <h2>Brussels</h2>
+                <h2>Mumbai</h2>
                 <h3>Cloudy<span>Wind 10km/h <span class="dot">•</span> Precip 0%</span></h3>
                 <br><br><br><br>
                 <h1>23°</h1>
@@ -62,6 +63,18 @@
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
+
+      <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
 
     {% endblock %}
   </body>

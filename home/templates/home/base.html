@@ -5,11 +5,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Farmer - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .goog-te-banner-frame.skiptranslate{display:none!important;}
+        body{top:0px!important;}
+    </style>
+    <script type="text/javascript" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" href="https://code.jquery.com/jquery-3.3.1.cookie.js"></script>
+    {% block head %}
+
+    {% endblock head %}
 </head>
 <body>
     <!-- Page Wrapper -->
@@ -32,7 +40,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span>KH</span>
+                                <span>{{user.username}}</span>
                                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -61,6 +69,12 @@
                 
                 {% endblock %}
 
+                <script type="text/javascript">
+                    $.cookie('googtrans', '/en/hi');
+                </script>
+                <center>
+                    <div id="google_translate_element"></div>
+                </center>
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
@@ -81,7 +95,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a> -->
         
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,7 +110,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{% url 'login' %}">Logout</a>
+                    <a class="btn btn-primary" href="{% url 'logout_view' %}">Logout</a>
                 </div>
             </div>
         </div>
@@ -114,5 +128,14 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+         new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+        
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
