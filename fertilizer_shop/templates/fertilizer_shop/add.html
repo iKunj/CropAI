@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Fertilizer - Shop - Add</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Add Fertilizer</h6>
+            </div>
+            <div class="card-body">
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <form method="POST" action="{% url 'fertilizer_shop_confirm' %}">
+                            {% csrf_token %}
+                            <center>
+                                <input type="text" name="fname" placeholder="Name of Fertilizer"><br>
+                                <input type="number" name="price" placeholder="Price of Fertilizer">
+                                <button class="btn btn-success btn-md">Add</button>
+                            </center>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock content %}
+</body>
+</html>

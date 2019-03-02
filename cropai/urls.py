@@ -9,6 +9,7 @@ from temperature import views as temperature_views
 from django.contrib.auth import views as auth_views
 from users import views as users_view
 from home import views as home_views
+from fertilizer_shop import views as fertilizer_shop_views
 
 urlpatterns = [
     path('', include('home.urls')),
@@ -23,4 +24,8 @@ urlpatterns = [
     #User Part
     path('login/', home_views.login_view , name='login'),
     path('logout/', users_view.logout_view , name='logout_view'),
+
+    #Fertilizer Shop
+    path('fertilizer_shop/add',fertilizer_shop_views.add, name='fertilizer_shop'),
+    path('fertilizer_shop/add/confirm',fertilizer_shop_views.add_confirm, name='fertilizer_shop_confirm'),
 ]

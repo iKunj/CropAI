@@ -1,0 +1,87 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <title>Fertilizer - Shop</title>
+    {% endblock head %}
+</head>
+<body class="fix-header">
+    {% block content %}
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard</h4> 
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" align="Center">Actions</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="{% url 'fertilizer_shop' %}"><h5 class="box-title" align="Center"><b>Add</b></h5></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#"><h5 class="box-title" align="Center"><b>Delete</b></h5></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" align="Center">Your Fertilizers</h6>
+                    </div>
+                    <div class="card-body">
+                        {% for fertilizer_d in fertilizer %}
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="white-box analytics-info">
+                                    <h4 class="box-title" align="Center"><b>{{fertilizer_d.name}}</b></h4>
+                                    <h5 class="box-title" align="Center">Rs. {{ fertilizer_d.price }}</h5>
+                                </div>
+                            </div>
+                        <hr>
+                        <!-- <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <h3 class="box-title">Total Page Views</h3>
+                                    <ul class="list-inline two-part">
+                                        <li>
+                                            <div id="sparklinedash2"></div>
+                                        </li>
+                                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="white-box analytics-info">
+                                <h3 class="box-title">Unique Visitor</h3>
+                                <ul class="list-inline two-part">
+                                    <li>
+                                        <div id="sparklinedash3"></div>
+                                    </li>
+                                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                                </ul>
+                            </div>
+                        </div>   -->
+                        {% endfor %} 
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2019 &copy; CropAI </footer>
+    {% endblock content %}
+</body>
+
+</html>
