@@ -1,0 +1,67 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Sell Here</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Actions</h6>
+            </div>
+            <div class="card-body">
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <a href="{% url 'fertilizer_shop' %}"><h5 class="box-title" align="Center"><b>Add</b></h5></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <a href="#"><h5 class="box-title" align="Center"><b>Delete</b></h5></a>
+                    </div>
+                </div>
+            </div>
+    </div> 
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Your Crops</h6>
+            </div>
+            <div class="card-body">
+                {% for crops_d in crops %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h4 class="box-title" align="Center"><b>{{ crops_d.name }}</b></h4>
+                            <h5 class="box-title" align="Center">Rs. {{ crops_d.price }}</h5>
+                        </div>
+                    </div>
+                <hr>
+                {% endfor %} 
+            </div>
+    </div>
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Buyers Demand</h6>
+            </div>
+            <div class="card-body">
+                {% for buy_d in buy %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h4 class="box-title" align="Center"><b>{{ buy_d.name }}</b></h4>
+                            <h5 class="box-title" align="Center">Rs. {{ buy_d.price }}</h5>
+                        </div>
+                    </div>
+                <hr>
+                {% endfor %} 
+            </div>
+    </div>
+    
+                
+    {% endblock %}
+</body>
+</html>

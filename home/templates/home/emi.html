@@ -1,0 +1,70 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Finance - EMI </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid" align="center">
+
+                <div class="col-xl-12 col-lg-7" >
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                <!-- Page Heading -->
+                <br>
+                      <h2 align="center" style="color:orange;">EMI Calculator</h2>
+                      </div>
+                      <hr>
+                      <div class="card-body">
+                            <input type="text" id="prncipleAmount" name="prncipleAmount" required class="form-control" placeholder="Enter Loan Amount"/>
+                            <br>
+                            <input type="text" id="InterestRate" name="InterestRate" required class="form-control" placeholder="Enter Rate of Interest"/>
+                            <br>
+                            <input type="text" id="emiMonth" name="emiMonth" required class="form-control" placeholder="Enter Period in Month"/>
+                            <input type="text" id="threshold" name="threshold" value="{{ threshold }}" hidden/>
+                            <br>
+                            <button onclick="EmiCalculaor();" style="padding-top:10px; " class="btn btn-success btn-block"> Find EMI </button>
+                        <hr>
+                    </div>
+              </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function EmiCalculaor(){
+                var month = $("#emiMonth").val();
+                var rate = $("#InterestRate").val();
+                var pamt = $("#prncipleAmount").val();
+                var thres = $("#threshold").val();
+                console.log(thres)
+                var monthlyInterestRatio = (rate/100)/12;
+                var monthlyInterest = (monthlyInterestRatio*pamt);
+                var top = Math.pow((1+monthlyInterestRatio),month);
+                var bottom = top -1;
+                var sp = top / bottom;
+                var emi = ((pamt * monthlyInterestRatio) * sp);
+                console.log(emi)
+                var result = thres - emi.toFixed(2);
+                console.log(result)
+                if (result > 0){
+                    var totalAmount = emi*month;
+                    var yearlyInteret = totalAmount-pamt;
+                    var downPayment = pamt*(20/100);
+                    //alert(emi);
+                    swal('Your Emi (Per Month)\n'+emi.toFixed(2));
+                }else{
+                    swal('Not Possible');
+                }
+            }
+        </script>
+    {% endblock %}
+</body>
+</html>

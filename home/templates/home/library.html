@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Plant Library</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+        <div class="container-fluid" align="center">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4" align="center">
+                <h1 class="h3 mb-0 text-gray-800" align="center">Plant Library!!{{data.totalresults}}</h1>
+            </div>
+            <div class="col-xl-3 col-sm-7 mb-3 " style="padding-top:20px;">
+                {% for plant in contents %}
+                    <div class="card" style="border-width:2px;border-color: #00887A">
+                        <!-- <img class="fir-author-image fir-clickcircle" width="60%" height="80%" src="{{news.urlToImage}}" alt="David East - Author"> -->
+                        <img class="fir-author-image fir-clickcircle" width="100%" src="{{plant.image_URL}}" alt="Ronak">
+                        <div class="card-body text-center">
+                            <figcaption>
+                                <h2><div class="fig-author-figure-title" style="color:Green;"><b>{{plant.crop}}</b></div></h2>
+                                <hr color="black">
+                                <h5><div class="fig-author-figure-title" style="color:orange;">Rainfall :<b>{{plant.rainfall}} mm</b></div></h5>
+                                <hr color="black">
+                                <h5><div class="fig-author-figure-title" style="color:orange;">Temperature : <b>{{plant.temperature}} cel</b></div></h5>
+                                <hr color="black">
+                                <h5><div class="fig-author-figure-title" style="color:orange;">Soil : <b>{{plant.soil}} </b></div></h5>
+                                <hr color="black">
+                                <h5><div class="fig-author-figure-title" style="color:blue;" align="justify">{{plant.Description}}</div></h5>
+                            </figcaption>
+                        </div>
+                        <!--</figure>-->
+                    </div>
+                    <br>
+                    <hr><br>
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+    {% endblock content %}
+</body>
+</html>

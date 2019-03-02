@@ -14,26 +14,29 @@
 <body>
     {% block content %}
 
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" align="Center">Add Fertilizer</h6>
+    <div class="container-fluid" align="center">
+
+        <div class="col-xl-12 col-lg-7" >
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+        <!-- Page Heading -->
+        <br>
+              <h2 align="center" style="color:orange;">Add Fertilizer</h2>
+              </div>
+              <div class="card-body">
+                  <form method="POST" action="{% url 'fertilizer_shop_confirm' %}">
+                      {% csrf_token %}
+                    <input type="text" style="padding:5px 5px; border:2px solid grey; border-radius: 5px;" name="fname" align="center" placeholder="Name of Fertilizer">
+                    <br><hr width="80%">
+                    <input type="number" style="padding:5px 5px; border:2px solid grey; border-radius: 5px;" name="price" align="center" placeholder="Price of Fertilizer">
+                    <br><hr>
+                    <button class="btn btn-success btn-block">Add</button>
+                    <hr>
+                </form>
             </div>
-            <div class="card-body">
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                    <div class="white-box analytics-info">
-                        <form method="POST" action="{% url 'fertilizer_shop_confirm' %}">
-                            {% csrf_token %}
-                            <center>
-                                <input type="text" name="fname" placeholder="Name of Fertilizer"><br>
-                                <input type="number" name="price" placeholder="Price of Fertilizer">
-                                <button class="btn btn-success btn-md">Add</button>
-                            </center>
-                            
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>    
+  </div>
 
     {% endblock content %}
 </body>

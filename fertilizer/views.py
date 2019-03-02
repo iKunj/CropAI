@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from fertilizer_shop.models import fertilizer_data
 
 def home(request):
- 	return render(request,'home/rainfall.html')
+	fertilizer = fertilizer_data.objects.all()
+	return render(request,'home/fertilizer.html', {'fertilizer': fertilizer})

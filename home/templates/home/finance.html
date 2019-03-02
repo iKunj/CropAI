@@ -1,0 +1,78 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Finance</title>
+    {% endblock head %}
+</head>
+<body id="page-top">
+    {% block content %}
+        <div class="container-fluid" align="center">
+            <div class="container-fluid" style="background:#82b74b; padding:5px 5px; border:1px; border-radius:6px;">
+                <h3 style="color:white;">Total Budget : {{ budget }} </h3>
+            </div>
+            <br>
+            <div class="container-fluid" style="background:#fff; padding:5px 5px; border:1px; border-radius:6px;">
+              <h3 style="color:Green;">Left Amount : {{ rbudget }} </h3>
+            </div>
+            <br><hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="{% url 'finance-expanse' %}" style="padding:5px 5px;">
+                        <button class="btn btn-info btn-block"><b>Add Expense</b></button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form action="{% url 'finance-tbudget' %}" style="padding:5px 5px;">
+                        <button class="btn btn-success btn-block"><b>Total Budget</b></button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form action="{% url 'emi-cal' %}" style="padding:5px 5px;">
+                        <button class="btn btn-primary btn-block"><b>EMI Calculator</b></button>
+                    </form>
+                </div>
+            </div>
+            <br><hr>
+
+            <div class="col-xl-12 col-lg-7" >
+
+              <!-- Table Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary" align="Center">History</h6>
+                </div>
+                <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead align="center">
+                    <tr>
+                      <th>Name</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for x in history %}
+                    <tr>
+                      <td>{{ x.name }}</td>
+                      <td>Rs. {{ x.amount }}</td>
+                      <td>{{ x.date }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         </div>
+        <!-- /.container-fluid -->
+    {% endblock content %}
+</body>
+</html>

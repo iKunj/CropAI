@@ -21,6 +21,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'library',
+    'company',
+    'sell',
+    'finance',
     'fertilizer_shop',
     'home.apps.HomeConfig',
     'fertilizer.apps.FertilizerConfig',

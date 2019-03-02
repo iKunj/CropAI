@@ -1,0 +1,238 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Voice Controlled Notes App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <link rel="stylesheet" href="sb-admin-2.min.css">
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link rel="stylesheet" href="sb-admin-2.css">
+
+
+    </head>
+    <body>
+    <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <div class="container-fluid" align="center">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <br>
+                  <h4 class="m-0 font-weight-bold text-primary" align="Center"><b>HelpTube</b></h4>
+                </div>
+                <div class="card-body"> 
+                <form id="search-term">
+                <div class="input-single">
+                    <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
+                <hr>
+                    <input class="btn btn-success btn-block" type="submit" value="Submit">
+                <hr>
+                </div>      
+                </form>   
+                <i class="fa fa-play" aria-hidden="true"><button id="start-record-btn" class="btn btn-primary" title="Start Recording">Start Recognition</button></i>
+                <button id="pause-record-btn" class="btn btn-primary" title="Pause Recording">Pause Recognition</button>    
+                </div>
+            </div>
+            <div class="container-fluid" align="center">
+            <div class="card shadow mb-8">
+                <div id="search-results"></div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+
+        <!-- Only used for the demos ads. Please ignore and remove. --> 
+        <script src="https://cdn.tutorialzine.com/misc/enhance/v3.js" async></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+    $('#search-term').submit(function (event) {
+        event.preventDefault();
+        var searchTerm = $('#note-textarea').val();
+        getRequest(searchTerm);
+    });
+});
+
+function getRequest(searchTerm) {
+    var url = 'https://www.googleapis.com/youtube/v3/search';
+    var params = {
+        type:'video',
+        part: 'snippet',
+        key: 'AIzaSyDFj4YsZWyhdiWiHC3kUljvyXYe-CxjA8Q',
+        q: searchTerm
+    };
+    
+    $.getJSON(url, params, showResults);
+}
+
+function showResults(results) {
+    var html = "";
+    var entries = results.items;
+    console.log(entries);
+    $.each(entries, function (index, value) {
+        var title = value.snippet.title;
+        var thumbnail = value.snippet.thumbnails.default.url;
+        var video = value.id.videoId;
+        html += '<iframe align="center" width="440" height="315" src="https://www.youtube.com/embed/' + video +'"frameborder="0" allowfullscreen></iframe>';
+        html += '<p>' + title + '</p>';
+    }); 
+    
+    $('#search-results').html(html);
+}
+try {
+  var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var recognition = new SpeechRecognition();
+}
+catch(e) {
+  console.error(e);
+  $('.no-browser-support').show();
+  $('.app').hide();
+}
+
+
+var noteTextarea = $('#note-textarea');
+var instructions = $('#recording-instructions');
+var notesList = $('ul#notes');
+
+var noteContent = '';
+
+// Get all notes from previous sessions and display them.
+var notes = getAllNotes();
+renderNotes(notes);
+
+
+
+/*-----------------------------
+      Voice Recognition 
+------------------------------*/
+
+// If false, the recording will stop after a few seconds of silence.
+// When true, the silence period is longer (about 15 seconds),
+// allowing us to keep recording even when the user pauses. 
+recognition.continuous = true;
+
+// This block is called every time the Speech APi captures a line. 
+recognition.onresult = function(event) {
+
+  // event is a SpeechRecognitionEvent object.
+  // It holds all the lines we have captured so far. 
+  // We only need the current one.
+  var current = event.resultIndex;
+
+  // Get a transcript of what was said.
+  var transcript = event.results[current][0].transcript;
+
+  // Add the current transcript to the contents of our Note.
+  // There is a weird bug on mobile, where everything is repeated twice.
+  // There is no official solution so far so we have to handle an edge case.
+  var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
+
+  if(!mobileRepeatBug) {
+    noteContent += transcript;
+    noteTextarea.val(noteContent);
+  }
+};
+
+/*-----------------------------
+      App buttons and input 
+------------------------------*/
+
+$('#start-record-btn').on('click', function(e) {
+  if (noteContent.length) {
+    noteContent += ' ';
+  }
+  recognition.start();
+});
+
+
+$('#pause-record-btn').on('click', function(e) {
+  recognition.stop();
+  instructions.text('Voice recognition paused.');
+});
+
+// Sync the text inside the text area with the noteContent variable.
+noteTextarea.on('input', function() {
+  noteContent = $(this).val();
+})
+
+$('#save-note-btn').on('click', function(e) {
+  recognition.stop();
+
+  if(!noteContent.length) {
+    instructions.text('Could not save empty note. Please add a message to your note.');
+  }
+  else {
+    // Save note to localStorage.
+    // The key is the dateTime with seconds, the value is the content of the note.
+    saveNote(new Date().toLocaleString(), noteContent);
+
+    // Reset variables and update UI.
+    noteContent = '';
+    renderNotes(getAllNotes());
+    noteTextarea.val('');
+    instructions.text('Note saved successfully.');
+  }
+      
+})
+
+
+notesList.on('click', function(e) {
+  e.preventDefault();
+  var target = $(e.target);
+
+  // Listen to the selected note.
+  if(target.hasClass('listen-note')) {
+    var content = target.closest('.note').find('.content').text();
+    readOutLoud(content);
+  }
+
+  // Delete note.
+  if(target.hasClass('delete-note')) {
+    var dateTime = target.siblings('.date').text();  
+    deleteNote(dateTime);
+    target.closest('.note').remove();
+  }
+});
+
+
+
+/*-----------------------------
+      Speech Synthesis 
+------------------------------*/
+
+function readOutLoud(message) {
+    var speech = new SpeechSynthesisUtterance();
+
+  // Set the text and voice attributes.
+    speech.text = message;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+  
+    window.speechSynthesis.speak(speech);
+}
+
+
+
+/*-----------------------------
+      Helper Functions 
+------------------------------*/
+
+// 
+
+
+
+    </script>
+
+    </body>
+</html>
+
+

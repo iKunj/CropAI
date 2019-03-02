@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Finance - Budget</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid" align="center">
+            <!-- Page Heading -->
+            <br>
+            <h2 align="center" style="color:Green;">Monthly Budget</h2>
+            <hr>
+            <form action="{% url 'finance-tbudget-confirm' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="number" class="form-control form-control-user" id="exampleInputPassword" placeholder="Enter the Amount : " name="bud">
+                </div>
+                <input type="submit" class="btn btn-success btn-lg" value="Submit">
+                <hr>
+            </form>
+        </div>
+        <!-- /.container-fluid -->
+    {% endblock content %}
+</body>
+</html>

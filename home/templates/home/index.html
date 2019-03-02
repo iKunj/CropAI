@@ -63,7 +63,9 @@
     
           <div class="row">
             <div class="col-xl-6 col-md-6 mb-4">
-              <button class="btn1 btn-secondary btn-block">Finance Handling</button>
+              <form action="{% url 'finance-home' %}">
+                <button class="btn1 btn-secondary btn-block">Finance Handling</button>
+              </form>
             </div>
 
             <div class="col-xl-6 col-md-6 mb-4">
@@ -73,13 +75,13 @@
 
           <div class="row">
               <div class="col-xl-6 col-md-6 mb-4">
-                <form action="#">
+                <form action="{% url 'sell-home' %}">
                   <button class="btn1 btn-danger btn-block">Sell Here</button>
                 </form>
                 </div>
   
                 <div class="col-xl-6 col-md-6 mb-4">
-                  <form action="#">
+                  <form action="{% url 'library-home' %}">
                     <button class="btn1 btn-success btn-block">Plant Library</button>
                   </form>
                 </div>

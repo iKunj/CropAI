@@ -1,0 +1,98 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Sell Here</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Actions</h6>
+            </div>
+            <div class="card-body">
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <a href="{% url 'sell-add' %}"><h5 class="box-title" align="Center"><b>Add</b></h5></a>
+                    </div>
+                </div>
+            </div>
+    </div> 
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Your Crops</h6>
+            </div>
+            <div class="card-body">
+                {% for crops_d in crops %}
+                    {% if crops_d.flag == 0 %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h4 class="box-title" align="Center"><b>{{ crops_d.crop_name }}</b></h4>
+                            <h5 class="box-title" align="Center">Rs. {{ crops_d.amount }} (Per KG.)</h5>
+                            <h5 class="box-title" align="Center">{{ crops_d.quantity }}  (KG.)</h5>
+                        </div>
+                    </div>
+                <hr>
+                {% else %}
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h4 class="box-title" align="Center"><b>{{ crops_d.crop_name }}</b></h4>
+                            <h5 class="box-title" align="Center">Rs. {{ crops_d.amount }} (Per KG.)</h5>
+                            <h5 class="box-title" align="Center">{{ crops_d.quantity }}  (KG.)</h5>
+                            <h5 class="box-title" align="Center">Ordered Confirmed by Company</h5>
+                        </div>
+                    </div>
+                {% endif %}
+                <hr>
+                {% endfor %} 
+            </div>
+    </div>
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" align="Center">Buyers Demand</h6>
+            </div>
+            <div class="card-body">
+                {% for buy_d in buy %}
+                    {% if buy_d.flag == 0 %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h4 class="box-title" align="Center"><b>{{ buy_d.crop_name }}</b></h4>
+                            <h5 class="box-title" align="Center">Rs. {{ buy_d.amount }}</h5>
+                            <h5 class="box-title" align="Center">{{ buy_d.quantity }}</h5>
+                            <form action="{% url 'sell_add_confirm_attach' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{ buy_d.id }}" hidden>
+                                <input type="submit" value="Contact" style="padding-top:10px; " class="btn btn-success btn-block">
+                            </form>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <h4 class="box-title" align="Center"><b>{{ buy_d.crop_name }}</b></h4>
+                                <h5 class="box-title" align="Center">Rs. {{ buy_d.amount }}</h5>
+                                <h5 class="box-title" align="Center">{{ buy_d.quantity }}</h5>
+                                <h5 class="box-title" align="Center"><b>Confirmed Order</b></h5>
+                            </div>
+                    </div>
+                    {% endif %}
+                <hr>
+                {% endfor %} 
+            </div>
+    </div>
+    <script>
+        function justbuy()
+        {
+            // alert("Hieeee");
+            swal('Location','Bangalore','success');   
+        }
+    </script>
+    
+                
+    {% endblock %}
+</body>
+</html>

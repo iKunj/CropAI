@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Fertilizer - Sell Here - Add</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+
+    <div class="container-fluid" align="center">
+
+        <div class="col-xl-12 col-lg-7" >
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+        <!-- Page Heading -->
+        <br>
+              <h2 align="center" style="color:orange;">Add Crop</h2>
+              </div>
+              <div class="card-body">
+                  <form method="POST" action="{% url 'sell_add_confirm' %}">
+                    {% csrf_token %}
+                    <input type="text" style="padding:5px 5px; border:2px solid grey; border-radius: 5px;" name="fname" align="center" placeholder="Name of Crop">
+                    <br><hr width="80%">
+                    <input type="number" style="padding:5px 5px; border:2px solid grey; border-radius: 5px;" name="price" align="center" placeholder="Price of Crop">
+                    <br><hr>
+                    <input type="number" style="padding:5px 5px; border:2px solid grey; border-radius: 5px;" name="quan" align="center" placeholder="Quantity of Crop">
+                    <br><hr>
+                    <button class="btn btn-success btn-block">Add</button>
+                <hr>
+            </form>
+            </div>
+      </div>
+    </div>    
+  </div>
+
+    {% endblock content %}
+</body>
+</html>

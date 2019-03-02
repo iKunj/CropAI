@@ -1,0 +1,34 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Finance - Expense</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid" align="center">
+            <!-- Page Heading -->
+            <br>          
+            <h2 align="center" style="color:red;">Your Expense</h2>
+            <hr>
+            <form action="{% url 'finance-expense-confirm' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter the Expense Name  : " name="name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Enter the Amount" name="amount">
+                </div>
+                <input type="submit" class="btn btn-success btn-lg" value="Submit">
+                <hr>
+            </form>
+        </div>
+        <!-- /.container-fluid -->
+    {% endblock content %}
+</body>
+</html>
