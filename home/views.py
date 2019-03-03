@@ -57,3 +57,6 @@ def login_view(request):
 				return redirect('home-index')
 		else:
 			return render(request, 'home/login.html')
+
+def help(request):
+	return render(request, 'home/help.html')

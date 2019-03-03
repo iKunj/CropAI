@@ -32,7 +32,14 @@
                     <!-- social profile links -->
                             
                     <!-- CTA button -->
-                    <p class="mt-4"><a href="https://soilhealth.dac.gov.in/" target="_blank"  class="btn btn-primary">Read More And Apply</a></p>
+                    <p class="mt-4"><a href="https://soilhealth.dac.gov.in/" target="_blank"  class="btn btn-primary">Read More</a></p>
+                    <p class="mt-4">
+                      <form action="{% url 'policy-add' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="scheme" value="Soil Health Card Scheme" hidden>
+                        <input type="submit" value = "Apply Now" class="btn btn-primary">
+                      </form>
+                    </p>
                   </div>
                 </div>
             </div>
@@ -48,7 +55,14 @@
                             <!-- social profile links -->
                            
                             <!-- CTA button -->
-                            <p class="mt-4"><a href="https://nmsa.dac.gov.in/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                            <p class="mt-4"><a href="https://nmsa.dac.gov.in/" target="_blank" class="btn btn-primary">Read More</a></p>
+                            <p class="mt-4">
+                                <form action="{% url 'policy-add' %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="text" name="scheme" value="National Mission for Sustainable Agriculture" hidden>
+                                  <input type="submit" value = "Apply Now" class="btn btn-primary">
+                                </form>
+                              </p>
                         </div>
                      </div>
             </div>
@@ -65,7 +79,14 @@
                             <!-- social profile links -->
                             
                             <!-- CTA button -->
-                            <p class="mt-4"><a href="https://pmksy.gov.in/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                            <p class="mt-4"><a href="https://pmksy.gov.in/" target="_blank" class="btn btn-primary">Read More</a></p>
+                            <p class="mt-4">
+                                <form action="{% url 'policy-add' %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="text" name="scheme" value="Pradhan Mantri Krishi Sinchai Yojana" hidden>
+                                  <input type="submit" value = "Apply Now" class="btn btn-primary">
+                                </form>
+                              </p>
                         </div>
                      </div>
             </div>
@@ -80,7 +101,14 @@
                     <!-- social profile links -->
                             
                     <!-- CTA button -->
-                    <p class="mt-4"><a href="http://www.enam.gov.in/enam/" target="_blank" class="btn btn-primary">Read More And Apply</a></p>
+                    <p class="mt-4"><a href="http://www.enam.gov.in/enam/" target="_blank" class="btn btn-primary">Read More</a></p>
+                    <p class="mt-4">
+                        <form action="{% url 'policy-add' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="text" name="scheme" value="National Agriculture Market (e-NAM)" hidden>
+                          <input type="submit" value = "Apply Now" class="btn btn-primary">
+                        </form>
+                    </p>
                   </div>
               </div>
             </div>

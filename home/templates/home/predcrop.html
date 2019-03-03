@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title" align="center">W</h4> 
+                </div>
+            </div> -->
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" align="Center">Possible predicted data for your farm</h6>
+                </div>
+                <div class="card-body">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                        <div class="container-fluid" style="background:#fff; padding:5px 5px; border:1px; border-radius:6px;">
+                        <h4 style="color:orange;">Crop Name: {{name}}</h4>
+                        </div>
+                        <hr>
+                        <div class="container-fluid" style="background:#fff; padding:5px 5px; border:1px; border-radius:6px;">
+                        <h4 style="color:orange;">Average Rainfall: {{rain}} mm</h4>
+                        </div>
+                        <hr>
+                        <div class="container-fluid" style="background:#fff; padding:5px 5px; border:1px; border-radius:6px;">
+                        <h4 style="color:orange;">Average Temperature: {{temp}}</h4>
+                        </div>
+                        <hr>
+                        <div class="container-fluid" style="background:#fff; padding:5px 5px; border:1px; border-radius:6px;">
+                        <h4 style="color:orange;">Predicted Soil Type: {{soil_Type}}</h4>
+                        </div>
+                        <hr>
+                        <h4 style="color:orange;">Do you think the data is correct?</h4>
+                        <form action="{% url 'predresyes-home' %}" method="post"><!--{% url 'predresyes-home' %}-->
+                                {% csrf_token %}
+                            <input type="submit" class="btn btn-success btn-block" value="Yes">
+                        </form>
+                        <form action="{% url 'predresno-home' %}" class="btn btn-danger btn-block" method="post"><!--{% url 'predresno-home' %} -->
+                                {% csrf_token %}
+                            <input type="submit" value="No">
+                        </form>
+                        <form action="{% url 'predresyes-home' %}" class="btn btn-primary btn-block" method="post"> <!--{% url 'predresyes-home' %} -->
+                                {% csrf_token %}
+                            <input type="submit" value="Don't Know">
+                        </form>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div> 
+        </div>    
+    </div>

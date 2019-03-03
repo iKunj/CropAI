@@ -20,9 +20,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('fertilizer/', fertilizer_views.home, name='fertilizer-home'),
     path('news/', news_views.home, name='news-home'),
+    
+    #Policy 
     path('policy/', policy_views.home, name='policy-home'),
+    path('policy/apply', policy_views.apply, name='policy-add'),
+    
     path('rainfall/', rainfall_views.home, name='rainfall-home'),
-    path('predict/', predict_views.home, name='predict-home'),
     path('temperature/', temperature_views.home, name='temperature-home'),
     
     #Finance Module Links
@@ -58,4 +61,14 @@ urlpatterns = [
 
     #youtube link
     path('youtube/', home_views.ysearch, name='youtube-search'),
+
+    #Help link
+    path('help/', home_views.help, name='help-home'),
+
+    #Predict Urls
+    path('predict/', predict_views.home, name='predict-home'),
+    path('predres/', predict_views.predres, name='predres-home'),
+    path('predresyes/', predict_views.predresyes, name='predresyes-home'),
+    path('predresno/', predict_views.predresno, name='predresno-home'),
+    path('predresno2/', predict_views.predresno2, name='predresno2-home'),
 ]

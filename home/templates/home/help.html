@@ -1,0 +1,107 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Farmer - Help</title>
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid" align="center">
+
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800" align="center">How can we Help You ?? </h1>
+            <br>
+            <!-- <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme. The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js documentation</a>.</p> -->
+  
+            <!-- Content Row -->
+            <!-- <div class="row"> -->
+  
+               <!-- Collapsable Card Example -->
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">About The App</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample">
+                    <div class="card-body">
+                      An AI Solution to farmers for increasing their cultivation of the crop they want to grow and thereby increasing their profit and eliminating the middle man too.
+                    </div>
+                  </div>
+                </div>
+                <!-- <hr color="orange" width="90%"> -->
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample1">
+                    <h6 class="m-0 font-weight-bold text-primary">Login Issues</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample1">
+                    <div class="card-body">
+                      An AI Solution to farmers for increasing their cultivation of the crop they want to grow and thereby increasing their profit and eliminating the middle man too.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Plant growth Issue</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample2">
+                    <div class="card-body">
+                      An AI Solution to farmers for increasing their cultivation of the crop they want to grow and thereby increasing their profit and eliminating the middle man too.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Loan Advice</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample3">
+                    <div class="card-body">
+                      An AI Solution to farmers for increasing their cultivation of the crop they want to grow and thereby increasing their profit and eliminating the middle man too.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample4" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">FAQ's</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample4">
+                    <div class="card-body">
+                      An AI Solution to farmers for increasing their cultivation of the crop they want to grow and thereby increasing their profit and eliminating the middle man too.
+                    </div>
+                  </div>
+                </div>
+                <!-- <hr width="80%"> -->
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Accordion -->
+                  <a href="#collapseCardExample5" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Links</h6>
+                  </a>
+                  <!-- Card Content - Collapse -->
+                  <div class="collapse show" id="collapseCardExample5">
+                    <div class="card-body">
+                      Youtube link to watch videos : <a href="{% url 'youtube-search' %}">Click Here</a><br>
+                      Toll Free Number : 1800-180-1551
+                    </div>
+                  </div>
+                </div>
+        </div>
+        <!-- /.container-fluid -->
+    {% endblock content %}
+</body>
+</html>

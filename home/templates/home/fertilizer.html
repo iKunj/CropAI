@@ -19,9 +19,9 @@
             </div>
             <div class="card-body text-center">
                 {% for fertilizer_d in fertilizer %}
-                    <h2><div class="fig-author-figure-title" align="center" style="color:blue;"><b>{{fertilizer_d.name}}</b></div></h2>
+                    <h2><div class="fig-author-figure-title" align="center"><b>{{fertilizer_d.name}}</b></div></h2>
                     <hr color="black" width="70%"/>
-                    <h5><div class="fig-author-figure-title" align="center" style="color:green;"> Rs. {{ fertilizer_d.price }} (per KG.)</b></div></h5>
+                    <h5><div class="fig-author-figure-title" align="center" > Rs. {{ fertilizer_d.price }} (Unit in Rs./50 kg bag)</b></div></h5>
                     <hr color="black" width="70%"/>
                     <button onclick="justbuy();" style="padding-top:10px; " class="btn btn-success btn-block"> Location </button>
                     <hr color="orange" width="100%"/>

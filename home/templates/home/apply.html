@@ -1,0 +1,55 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>AgriCrop - Policy</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    {% endblock head %}
+</head>
+<body>
+    {% block content %}    
+        <!-- Begin Page Content -->
+        <div class="container-fluid" align="center">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800" align="center">Registration Details </h1>
+                <br>
+                <!-- <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme. The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js documentation</a>.</p> -->
+      
+                <!-- Content Row -->
+                <!-- <div class="row"> -->
+      
+                   <!-- Collapsable Card Example -->
+                    <div class="card shadow mb-4">
+                    <div class="card" align="center">
+                      <br>
+                      <input type="text" style="margin:auto; padding:5px 5px; border:2px solid green; border-radius:9px;"placeholder="Enter Your Name : " name="name" required>
+                      <br>
+                        <input type="number" style="margin:auto; padding:5px 5px; border:2px solid green; border-radius:9px;" placeholder="Enter your Mobile Number" name="no" required>
+                        <br>
+                        <input style="margin:auto; padding:5px 5px; border:2px solid green; border-radius:9px;" value="{{title}}">
+                        <hr>
+                        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                        <hr>
+                        <button style="margin:auto; padding:5px 5px;" class="btn btn-success" onclick="justbuy();">Register & Forward Details</button>
+                        <hr>
+                    </div>
+                  </div>
+              </div>
+              <!-- /.container-fluid -->
+
+              <script>
+                    function justbuy()
+                    {
+                        // alert("Hieeee");
+                        swal('Great','Applied successfully','success');
+                    }
+                </script>
+
+    {% endblock content %}
+</body>
+</html>
