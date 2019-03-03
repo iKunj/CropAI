@@ -23,19 +23,35 @@
             
             <!-- Area Chart -->
             <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" align="Center">Temperature Data</h6>
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary" align="Center">Rainfall Chart</h6>
+                </div>
+                <div class="card-body">
+                 <h2>Bangalore</h2>
+                  <br><br><br>
+                  <br>
+                  <h1>{{tday}}°</h1>
+                  <br><br>
+                  <table>
+                      <tr>
+                          <td>MON</td>
+                          <td>TUE</td>
+                          <td>WED</td>
+                          <td>THU</td>
+                          <td>FRI</td>
+                      </tr>
+                      <tr>
+                        {% for x in data %}
+                          <td>{{ x }}</td>
+                        {% endfor %}
+                      </tr>
+                  </table>
+                </div>
               </div>
-              <div class="card-body">
-                  <h2>Bangalore</h2>
-                  {% for a in contents.weather %}<h3>{{a.description}}{% endfor %}<span>{{contents.wind.speed}}km/h <span class="dot"></h3>
-                 <br><br><br>
-                 <br>
-                 <h1>{{contents.main.temp}}</h1>
-                 <br><br>
-              </div>
-            </div>
-            <!-- Area Chart Ends Here -->  
+
+
+
+          
           </div>
         </div>  
 
@@ -65,7 +81,7 @@
                               },
                               series: [ {
                                   name: 'Mumbai',
-                                  data: {{data}}
+                                  data: {{data1}}
                               }]
                           });
             

@@ -65,11 +65,21 @@ data_temp =[
 ]
 
 def home(request):
-	args = {}
-	ll = []
-	url = "https://openweathermap.org/data/2.5/weather?q=bangalore&appid=b6907d289e10d714a6e88b30761fae22"
-	r = requests.get(url.format()).json()
-	args['contents'] = r
-	for i in range(len(data_temp)):
-		ll.append(data_temp[i]['Temp'])
-	return render(request,'home/temperature.html', {"data": ll, "args":args})
+  args = {}
+  ll = []
+  url = "https://openweathermap.org/data/2.5/weather?q=bangalore&appid=b6907d289e10d714a6e88b30761fae22"
+  r = requests.get(url.format()).json()
+  args['contents'] = r
+  for i in range(5):
+    temp = int(data_temp[i]['Temp'])
+    ll.append(temp)
+
+  ll1 = []
+  for i in range(len(data_temp)):
+    temp = int(data_temp[i]['Temp'])
+    ll1.append(temp)
+
+  print(ll)
+  print(args['contents'])
+  temp = ll[0]
+  return render(request,'home/temperature.html', {"data": ll, "args":args, "tday":temp, "data1":ll1})
